@@ -1,7 +1,7 @@
 const main = document.querySelector("#main");
 const qna = document.querySelector("#qna");
 
-const endPoint = 12;
+const endPoint = 12; //총 질문 12개로 정의
 
 
 function goResult(){
@@ -32,15 +32,15 @@ function addAnswer(answerText, qIdx){
   answer.addEventListener("click", function(){
     var children = document.querySelectorAll('.answerList');
     for(let i = 0; i < children.length; i++){
-      children[i].disabled = true;
+      children[i].disabled = true; //버튼 비활성화
       children[i].style.WebkitAnimation = "fadeOut 0.5s";
       children[i].style.animation = "fadeOut 0.5s";
     }
     setTimeout(() => {
       for(let i = 0; i < children.length; i++){
-        children[i].style.display = 'none';
+        children[i].style.display = 'none'; //모든 버튼 사라지게
       }
-      goNext(++qIdx);
+      goNext(++qIdx); //1증가
     },450)
   }, false);
 }
@@ -51,6 +51,7 @@ function goNext(qIdx){
   for(let i in qnaList[qIdx].a){
     addAnswer(qnaList[qIdx].a[i].answer, qIdx);
   }
+  //스테이터스 바
   var status = document.querySelector('.statusBar');
   status.style.width = (100/endPoint) * (qIdx+1) + '%';
 }

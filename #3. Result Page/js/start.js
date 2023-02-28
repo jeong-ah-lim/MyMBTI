@@ -5,6 +5,8 @@ const result = document.querySelector("#result");
 const endPoint = 12;
 const select = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
+//결과를 연산, 질문에 Type이 있음
+//어떠한 Type을 많이 선택하였는지 연산
 function calResult(){
   console.log(select);
   var result = select.indexOf(Math.max(...select));
@@ -18,7 +20,7 @@ function setResult(){
 
   var resultImg = document.createElement('img');
   const imgDiv = document.querySelector('#resultImg');
-  var imgURL = 'img/image-' + point + '.png';
+  var imgURL = 'img/image-' + point + '.png'; //이미지 경로
   resultImg.src = imgURL;
   resultImg.alt = point;
   resultImg.classList.add('img-fluid');
@@ -86,6 +88,7 @@ function goNext(qIdx){
     addAnswer(qnaList[qIdx].a[i].answer, qIdx, i);
   }
   var status = document.querySelector('.statusBar');
+  console.log(`${qIdx+1} / ${endPoint}`); //pagination
   status.style.width = (100/endPoint) * (qIdx+1) + '%';
 }
 
